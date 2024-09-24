@@ -1,3 +1,6 @@
+use rand::seq::SliceRandom;
+use rand::thread_rng;
+
 enum Suit {
     Clubs,
     Hearts,
@@ -49,5 +52,10 @@ fn main() {
             };
             deck.push(Card::new(current_suit, j));
         }
+    }
+    let mut rng = thread_rng();
+    deck.shuffle(&mut rng);
+    for card in deck {
+        println!("{}", card.to_string());
     }
 }
